@@ -1,0 +1,28 @@
+<div class="rec-items">
+    <!--all items in rec panel-->
+    <div class="gibsonjack-profile">
+        <span><img class="gibsonjack-img" alt="{{user.username}} image" src={{user.thumb_url}}></span>
+
+        <span>{{user.username}}</span>
+    </div>
+   
+        <div class="suggestion-profiles">
+            <span class="suggestions">Suggestions for you</span>
+
+            {% for item in suggestions%}
+            <div class="suggested-profile">
+                <span><img class="suggestion-imgs" alt="{{item.get('username')}} image" src="{{item.get('thumb_url')}}" ></span>
+                <div class="name-and-suggestion">
+                    <span class="suggested-name">{{item.get('username')}}</span>
+
+                    <span class="suggested-for-you">suggested for you</span>
+                </div>
+
+                <span class="follow">follow</span>
+            </div>
+            {% endfor%}
+           
+         
+        </div>
+    
+</div>

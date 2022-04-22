@@ -1,0 +1,52 @@
+
+{%for item in posts%}
+<div class="post" >  <!--post 1-->
+    <div class="name-and-ellipse">
+        <span class="post-name">{{item.get('user').get('username')}}</span>
+        
+        <span class="ellipse">...</span>
+    </div>
+    <img class="post-image" alt="{{item.get('user').get('username')}} post image" src="{{item.get('image_url')}}">
+    <div class="icons">
+        
+        <span class="other-icons">
+            <button class="other-icons" type="button" aria-label="like"><i class='far fa-heart other-icons'></i></button>
+            <button class="other-icons" type="button" aria-label="comment"><i class='far fa-comment other-icons'></i></button>
+            <button class="other-icons" type="button" aria-label="share"><i class='far fa-paper-plane other-icons'></i></button>
+            
+        </span>
+
+        <span class="bookmark">   <button aria-label="like" class="other-icons"><i class='far fa-bookmark other-icons'></i></button> </span>
+    </div>
+    <span class="likes">{{item.get('likes')}} likes</span>
+    <div class="caption-and-comments"> <!--caption and comments-->
+        <p class="comment-background"><strong class="comment-background">{{item.get('user').get('username')}}</strong>
+        {{item.get('title')}}...<span class="comment-background" style="color:blue">more</span></p>
+
+        {% if item.get('comments')|length > 1 %}
+
+        <button class="view-comments">View all {{item.get('comments')|length}} comments</button>
+
+        {% endif %}
+        
+
+        {% if item.get('comments')|length >= 1 %}
+
+        <p class="comment-background"><strong class="comment-background">{{item.get('comments')[0].get('user').get('username')}}</strong>
+        {{item.get('comments')[0].get('text')}}</p>
+
+        {% endif %}
+        <!--<p class="comment-background"><strong class="comment-background">vanek97</strong>
+        Here is another comment text text text text.</p>-->
+        <span class="comment-background" style="color:black;font-size: 1em;"> {{  item.display_time.upper() }}</span>
+        
+    </div>
+        <hr class="comment-background" style="width:100%">
+        <div class="post-comments"> <!--posting comments-->
+            <i style="margin:10px" class="far fa-smile comment-background"></i>
+            <span class="comment-background" style="color:black;font-size: 0.9em;">Add a comment...</span>
+            <button aria-label="post" class="post-btn comment-background"><span class="comment-background">Post</span></button>
+        </div>
+    </div>
+
+{% endfor %}

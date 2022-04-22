@@ -1,0 +1,8 @@
+
+{% for item in stories%}
+<div class="each-story">
+    <img class="suggestion-imgs story-images" alt="{{item.user.username}} story image" src="{{item.get('user').get('thumb_url')}}">
+    <span class="story-name">{{item.user.username}}</span>
+</div>
+
+{% endfor %}
