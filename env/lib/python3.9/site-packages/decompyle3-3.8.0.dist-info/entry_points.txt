@@ -1,0 +1,4 @@
+[console_scripts]
+decompyle3 = decompyle3.bin.decompile:main_bin
+py3disassemble = decompyle3.bin.py3disassemble:main
+
