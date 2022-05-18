@@ -37,17 +37,23 @@ class BookmarksListEndpoint(Resource):
 
         # get all posts
         posts= Post.query.all()
+
+    
         post_ids = [post.id for post in posts]
+        print ("post it", post_ids)
         if post_id not in post_ids:
             return Response(json.dumps({"message": "invalid post id."}), mimetype="application/json", status=404)
 
         user_ids = get_authorized_user_ids(self.current_user)
 
+        
         post = Post.query.get(post_id)
+
+
         if post.user_id not in user_ids:
             return Response(json.dumps({"message": "unauthorized post id."}), mimetype="application/json", status=404)
 
-
+       
 
         # 1. Create:
         try: 

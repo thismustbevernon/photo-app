@@ -1,0 +1,101 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Photo App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/starter-client.css">
+    <!--<link rel="stylesheet" href="/static/css/lab7.css">-->
+
+    <!-- client-side scripts -->
+    <script lang="text/javascript" src="/static/js/hw04.js" defer></script>
+</head>
+<body>
+    <!-- Nav Bar still rendered via server-side template -->
+    {% include 'includes/navbar.html'  %}
+
+    <!-- <aside>
+        <header>
+           
+        </header>
+        <div class="suggestions">
+            <p class="suggestion-text">Suggestions for you</p>
+            
+                
+                
+                <section id="suggestions">
+                    
+                </section>
+            
+        </div>
+    </aside> -->
+    <!--<aside>
+        <header>
+            
+        </header>
+        <p class = "suggestion-text"> Suggestions for you</p>
+        <section class="suggestions">
+        </section>
+    </aside>
+
+    <main class="content">
+        
+        <header class="stories">
+            
+        </header>
+        
+
+        
+        <div id="posts">
+            
+            
+        </div>
+        
+
+    </main>-->
+
+
+    <!-- next, suggestions -->
+    <section>
+        <div class="rec-items">
+            <!--all items in rec panel-->
+            <div class="gibsonjack-profile">
+                <span><img class="gibsonjack-img" alt="{{user.username}} image" src={{user.thumb_url}}></span>
+        
+                <span>{{user.username}}</span>
+            </div>
+           
+                <div class="suggestion-profiles"> <!-- select suggestion profiles in js-->
+                    <span class="suggestions">Suggestions for you</span>
+        
+                 
+                </div>
+            
+        </div>
+    </section>
+
+    <!-- next, stories and cards -->
+
+    <div class="stories-and-cards">
+        <section>
+             <!--section for stories-->
+            <div class="story-items"> <!-- select story items in js-->
+    
+                
+    
+               
+                
+            </div>
+            
+        </section>
+        <section class="card-items">
+            <!--section for cards-->
+         
+             <!-- select card items in js-->
+            
+        </section>
+    </div>
+
+</body>
+</html>

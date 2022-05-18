@@ -31,23 +31,21 @@ initialize_routes(api)
 # Server-side template for the homepage:
 @app.route('/')
 def home():
-    return '''
-       <p>View <a href="/api">REST API Tester</a>.</p>
-       <p>Feel free to replace this code from HW2</p>
-    '''
+    return render_template(
+        'starter-client.html', 
+        user=app.current_user
+    )
 
-# @app.route('/')
-# def home():
-#     current_user = fake_data.generate_user()
+
+# @app.route('/lab7')
+# def lab7():
 #     return render_template(
-#         'index.html', 
-#         user=current_user,
-#         posts=fake_data.generate_posts(n=8),
-#         stories=fake_data.generate_stories(n=6),
-#         suggestions=fake_data.generate_suggestions(n=7)
+#         'lab7.html', 
+#         user=app.current_user
 #     )
 
 @app.route('/api')
+@app.route('/api/')
 def api_docs():
     navigator = ApiNavigator(app.current_user)
     return render_template(
@@ -62,6 +60,3 @@ def api_docs():
 # enables flask app to run using "python3 app.py"
 if __name__ == '__main__':
     app.run()
-
-
-
