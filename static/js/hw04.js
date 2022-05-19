@@ -120,6 +120,7 @@ const unbookmarkPost = elem => {
     
     const postId =  Number(elem.dataset.postId);
     console.log('unbookmark post', elem);
+   
     //added two lines bellow
     // const postData = {
     //     "post_id": postId
@@ -160,15 +161,115 @@ const unbookmarkPost = elem => {
         //redraw the post
     });
  };
+ // everything comments//////////////////////////////////////////////////////////
+
+ const addComment = ev => {
+    const elem = ev.currentTarget;
+    let inputElement = elem;
+    console.log(inputElement);
+    ev.preventDefault();
+
+    if (elem.tagName.toUpperCase() === 'INPUT') {
+        if (ev.keyCode !== KeyCodes.RETURN) {
+            return;
+        }
+    } else {
+        // it's a button:
+        inputElement = elem.previousElementSibling.querySelector('input');
+    }
+    const comment = inputElement.value;
+    if (comment.length === 0) {
+        return;
+    }
+    const postId = inputElement.dataset.postId;
+    console.log("pi: ", elem.dataset.postId)
+    console.log("pi: ", postId)
+
+    const postData = {
+        "post_id": postId,
+        "text": comment
+    };
+    console.log("this is post data",postData);
+    
+    fetch("/api/comments", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData)
+        })
+        .then(response => response.json())
+        .then(comment => {
+            redrawPost(comment.post_id)
+          
+        });
+};
+
+
+
+
+/*
+ const renderAddedComment = post => {
+        return `
+            <button 
+                data-post-id = "${post.id}"
+                onclick="addComment(event);"
+                aria-label="post" 
+                class="post-btn comment-background">
+                <span class="comment-background">Post</span>
+            </button>
+        `;
+};
+
+
+ const addComment = ev => {
+    const elem = ev.currentTarget;
+    console.log('elem', elem.dataset);
+    
+    const postId = elem.dataset.postId;
+    console.log('id', elem.dataset.postId);
+    console.log('adding comment', elem.value);
+    const postData = {
+        "post_id": postId,
+        "text":elem.value
+    };
+    console.log('pd', postData);
+    fetch("/api/comments/",{
+        method:"POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData)
+    })
+    .then(response => response.json())
+    .then(data=> {
+        console.log(data);
+        redrawPost(postId);
+      
+        //redraw the post
+    });
+    
+ };
+
+
+ const handleComment = ev => {
+    console.log("Handle comment functionality");
+    const elem = ev.currentTarget
+    console.log("Handle comment functionality");
+ };
  
+*/
+
+ // everything comments
 
 const handleShare = ev => {
     console.log("Handle share functionality");
 };
-
+/*
 const handleComment = ev => {
     console.log("Handle comment functionality");
 };
+*/
 
 const renderLikeButton = post => {
     if (post.current_user_like_id) {
@@ -203,6 +304,7 @@ const renderBookmarkButton = post => {
     if (post.current_user_bookmark_id) {
         return `
             <button 
+                data-bookmark-id = "${post.current_user_bookmark_id}"
                 data-post-id = "${post.id}"
                 data-like-id = "${post.current_user_like_id}"
                 onclick="handleBookmark(event);"
@@ -280,9 +382,10 @@ const post2Html = post => { // takes data rep of a post as an arg and rets an ht
         <div class="post-comments"> 
             <i style="margin:10px" class="far fa-smile comment-background"></i>
             <span class="comment-background" style="color:black;font-size: 0.9em;">
-                <input type="text" placeholder="Add a comment...">
+                <input data-post-id="${post.id}" type="text" placeholder="Add a comment...">
             </span>
             <button 
+            
                 onclick="addComment(event);"
                 aria-label="post" 
                 class="post-btn comment-background">
@@ -350,18 +453,35 @@ const showModal = ev => {
     })
     
 }
-
+/*
 const addComment = ev => {
     console.log("Add comment...");
 };
+*/
 
 const post2Modal = post => {
     console.log('open modal!');
+    
     return `
     <div class="modal-bg" aria-hidden="false" role="dialog">
+       
+        <button class="close" aria-label="Close the modal window" onclick="closeModal(event);">Close</button>
         <section class="modal">
-            <button class="close" aria-label="Close the modal window" onclick="closeModal(event);">Close</button>
-            <img src="${post.image_url}">
+            <div modal-pic>
+                <img  class="modal-image" src="${post.image_url}">
+            <img src="${post.user.thumb_url}"> 
+            <p> ${post.user.username}</p>
+            </div>
+
+           
+            <section class = "modal-comments">
+            ${post.comments.map(comment => {return `
+            <p class="comment-background"><img src= ${comment.user.thumb_url}> <strong class="comment-background">${comment.user.username}</strong>
+                ${comment.text}
+            </p>
+                ${comment.display_time}
+            `})}
+            </section>
         </section>
     </div>
     `

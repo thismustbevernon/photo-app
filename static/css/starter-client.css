@@ -604,6 +604,8 @@ main {
     font-size: 1em;
 }
 
+
+
 @media (max-width: 900px) { 
     .rec-items{
         display: none;
@@ -642,6 +644,7 @@ main {
 }
 
 .modal {
+ 
     width: 60vw;
     height: auto;
     max-height: 80vh;
@@ -649,9 +652,33 @@ main {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    /* padding: 20px; original padding*/
+    /* added this*/
     padding: 20px;
+    padding-left: 500px;
+    
+    overflow-y: scroll;
+    overscroll-behavior-y: contain;
 }
 
+.modal-image {
+    width: 300px !important;
+    position: relative;
+    left: 0px;
+   
+
+ 
+
+}
+.modal-comments {
+   
+    left: 1100px
+}
+
+
+.modal-pic{
+    left: 0px;
+} 
 .close {
     align-self: flex-end;
 }

@@ -276,6 +276,16 @@ html, body {
     font-size: 1em;
 }
 
+/* adding css to style modal*/
+.modal-image {
+    width: 20px !important;
+
+}
+
+.modal {
+    background-color: aqua;
+
+}
 @media (max-width: 900px) { 
     .rec-items{
         display: none;
