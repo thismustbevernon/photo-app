@@ -1,4 +1,3 @@
-
 const story2Html = story => { // map invokes this fxn on each item on the list 1x1. so takes each story obj as an arg and generates this html rep of that story
     return `
     <div class="each-story">
@@ -202,7 +201,8 @@ const unbookmarkPost = elem => {
         .then(comment => {
             redrawPost(comment.post_id)
           
-        });
+        })
+        .then(console.log("successfull"))
 };
 
 
@@ -366,7 +366,7 @@ const post2Html = post => { // takes data rep of a post as an arg and rets an ht
         <span class="likes">${post.likes.length} likes</span>
         <div class="caption-and-comments"> 
             <p class="comment-background"><strong class="comment-background">${post.user.username}</strong>
-            ${post.caption}...<span class="comment-background" style="color:blue">more</span></p>
+            ${post.caption}</p>
            
             
 
@@ -427,10 +427,14 @@ const displayComments = post => {
         // display a button
         return `
         <button 
+            id = "comment-button${post.id}"
             data-post-id=${post.id}
             onclick = "showModal(event)"
             class="view-comments">View all ${post.comments.length} comments
         </button>
+        <p class="comment-background"><strong class="comment-background">${post.comments[post.comments.length-1].user.username}</strong>
+            ${post.comments[post.comments.length-1].text}
+        </p>
         `
     } else if (post.comments.length == 1) {
         // display single comment
@@ -450,8 +454,9 @@ const showModal = ev => {
     redrawPost(postId, post => {
         const html = post2Modal (post);
         document.querySelector(`#post_${post.id}`).insertAdjacentHTML('beforeend', html);
+        document.querySelector('.close').focus();
     })
-    
+
 }
 /*
 const addComment = ev => {
@@ -464,34 +469,74 @@ const post2Modal = post => {
     
     return `
     <div class="modal-bg" aria-hidden="false" role="dialog">
-       
-        <button class="close" aria-label="Close the modal window" onclick="closeModal(event);">Close</button>
-        <section class="modal">
-            <div modal-pic>
-                <img  class="modal-image" src="${post.image_url}">
-            <img src="${post.user.thumb_url}"> 
-            <p> ${post.user.username}</p>
-            </div>
 
-           
-            <section class = "modal-comments">
-            ${post.comments.map(comment => {return `
-            <p class="comment-background"><img src= ${comment.user.thumb_url}> <strong class="comment-background">${comment.user.username}</strong>
-                ${comment.text}
-            </p>
-                ${comment.display_time}
-            `})}
-            </section>
-        </section>
+        <button data-post-id = "${post.id}" class ="close" aria-label="Close the modal window" onclick="closeModal(event);">Close</button>
+
+        <div class="modal-sm">
+        
+            <div class="modal-img-div">
+                <img 
+                    class="modal-image" 
+                    src="${post.image_url}"
+                >
+            </div>
+            
+            <div class="modal">
+                
+
+                <div class="modal-user-profile">
+                    <span><img class="modal-pic" src="${post.user.thumb_url}"></span> 
+                    <span> ${post.user.username}</span>
+                </div>
+
+                <div class="i-comments">
+                    ${post.comments.map(comment => {return `
+                    <div class="each-comment">
+                        <img class="comment-image" src= ${comment.user.thumb_url}>
+                        <div class="comment-and-time">
+                            <p class="comment"> 
+                                <strong >${comment.user.username + ' '}</strong>${comment.text}
+                            </p>
+                            <strong>${comment.display_time}</strong>
+                        </div>
+                        <button class="like-comment" type="button" aria-label="like">
+                            <i class='far fa-heart other-icons'></i>
+                        </button>
+                    </div>
+                    `}).join("")}
+                </div>
+            </div>
+        </div>
     </div>
     `
 };
-
+// edited this fuction
 const closeModal = ev => {
+    /*
+    if (!ev || ev.target.id == 'modal-bg' || ev.target.id === "close"|| ev.target.classList.contains('fa-times')){
+        document.body.style.overflow = 'auto'
+        const elem = document.querySelector('#close');
+        anchor.focus();
+        const y = anchor.getBoundingClientRect().top + window.pageYOffsetN-100;
+        window.scrollTo({top:y,behavior: 'smooth'});
+        document.querySelector('modal-bg').remove();
+        if (ev){
+            ev.stopPropagation();
+        }
+    }
+    */
     console.log('close modal!');
     document.querySelector('.modal-bg').remove();
+    var post_id = ev.currentTarget.dataset.postId
+    document.querySelector(`#comment-button${post_id}`).focus()
  }
  
+ function keyPress (e) {
+    if(e.key === "Escape") {
+        console.log ('hbu');
+        // write your logic here.
+    }
+}
 
 const toggleFollow = ev => {
     //console.log(ev);
@@ -607,7 +652,7 @@ const initPage = () => {
 const getComments = post => {
     if (post.comments.length > 1) {
         return `
-        <button class="view-comments">View all ${post.comments.length} comments</button>
+        <button id = "comment-button${post.id}" class="view-comments">View all ${post.comments.length} comments</button>
         <p class="comment-background"><strong class="comment-background">${post.comments[0].user.username}</strong>
             ${post.comments[0].text}</p>
         <span class="comment-background" style="color:black;font-size: 1em;"> ${post.comments[0].display_time}</span>

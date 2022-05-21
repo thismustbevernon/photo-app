@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,47 +14,7 @@
     <!-- Nav Bar still rendered via server-side template -->
     {% include 'includes/navbar.html'  %}
 
-    <!-- <aside>
-        <header>
-           
-        </header>
-        <div class="suggestions">
-            <p class="suggestion-text">Suggestions for you</p>
-            
-                
-                
-                <section id="suggestions">
-                    
-                </section>
-            
-        </div>
-    </aside> -->
-    <!--<aside>
-        <header>
-            
-        </header>
-        <p class = "suggestion-text"> Suggestions for you</p>
-        <section class="suggestions">
-        </section>
-    </aside>
-
-    <main class="content">
-        
-        <header class="stories">
-            
-        </header>
-        
-
-        
-        <div id="posts">
-            
-            
-        </div>
-        
-
-    </main>-->
-
-
+    
     <!-- next, suggestions -->
     <section>
         <div class="rec-items">
@@ -65,9 +24,9 @@
         
                 <span>{{user.username}}</span>
             </div>
-           
+            <span class="suggestions">Suggestions for you</span>
                 <div class="suggestion-profiles"> <!-- select suggestion profiles in js-->
-                    <span class="suggestions">Suggestions for you</span>
+                    
         
                  
                 </div>
@@ -80,11 +39,9 @@
     <div class="stories-and-cards">
         <section>
              <!--section for stories-->
-            <div class="story-items"> <!-- select story items in js-->
+            <div class="story-items"> 
+                <!-- select story items in js-->
     
-                
-    
-               
                 
             </div>
             
