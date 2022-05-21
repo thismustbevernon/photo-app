@@ -12,13 +12,16 @@ class StoriesListEndpoint(Resource):
     def get(self):
         # get stories created by one of these users:
         # print(get_authorized_user_ids(self.current_user))
-        user_ids = get_authorized_user_ids(self.current_user)
+        #user_ids = get_authorized_user_ids(self.current_user)
         
-        stories = Story.query.filter(Story.user_id.in_(user_ids)).all() 
+        #stories = Story.query.filter(Story.user_id.in_(user_ids)).all() 
 
-        stories_json = [user.to_dict() for user in stories]
+        #stories_json = [user.to_dict() for user in stories]
 
-        return Response(json.dumps(stories_json), mimetype="application/json", status=200)
+        #return Response(json.dumps(stories_json), mimetype="application/json", status=200)
+        stories = Story.query.limit(5).all()
+
+        return Response(json.dumps([story.to_dict() for story in stories]), mimetype="application/json", status=200)
 
 
 

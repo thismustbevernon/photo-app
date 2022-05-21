@@ -512,31 +512,14 @@ const post2Modal = post => {
 };
 // edited this fuction
 const closeModal = ev => {
-    /*
-    if (!ev || ev.target.id == 'modal-bg' || ev.target.id === "close"|| ev.target.classList.contains('fa-times')){
-        document.body.style.overflow = 'auto'
-        const elem = document.querySelector('#close');
-        anchor.focus();
-        const y = anchor.getBoundingClientRect().top + window.pageYOffsetN-100;
-        window.scrollTo({top:y,behavior: 'smooth'});
-        document.querySelector('modal-bg').remove();
-        if (ev){
-            ev.stopPropagation();
-        }
-    }
-    */
+  
+
     console.log('close modal!');
     document.querySelector('.modal-bg').remove();
     var post_id = ev.currentTarget.dataset.postId
     document.querySelector(`#comment-button${post_id}`).focus()
  }
  
- function keyPress (e) {
-    if(e.key === "Escape") {
-        console.log ('hbu');
-        // write your logic here.
-    }
-}
 
 const toggleFollow = ev => {
     //console.log(ev);
@@ -667,6 +650,7 @@ const getComments = post => {
         `
     }
 }
+
 
 // invoke init page to display stories:
 initPage(); // this function is invoked on page load. the second the entire page loads, this fxn fires and calls display stories
