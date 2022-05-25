@@ -1,704 +1,493 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
-
+ 
 * {
-    box-sizing: border-box;
+   box-sizing: border-box;
 }
-
+ 
 body {
-    margin: 0px;
-    font-family: Arial, Helvetica, sans-serif;
-    
-    background-color: #f2f2f2;
+   margin: 0px;
+   font-family: Arial, Helvetica, sans-serif;
+  
+   background-color: #f2f2f2;
 }
-
-
+ 
+ 
 aside, main, nav {
-    padding: 10px;
+   padding: 10px;
 }
-
+ 
 h1, h2, h3, h4 {
-    font-family: 'Comfortaa', cursive;
+   font-family: 'Comfortaa', cursive;
 }
-
-
+ 
+ 
 a, a:visited, a:hover, a:link {
-    
-    color: rgb(44, 105, 155);
+  
+   color: rgb(44, 105, 155);
 }
 a:hover {
-    color: #777;
+   color: #777;
 }
-/*
+ 
 button.link {
-    color: rgb(44, 105, 155);
-    background-color: transparent;
-    border-width: 0px;
+   color: rgb(44, 105, 155);
+   background-color: transparent;
+   border-width: 0px;
 }
 button.link:hover {
-    color: #777;
+   color: #777;
 }
-
+ 
 button.link.following {
-    padding: 5px 10px !important;
+   padding: 5px 10px !important;
 }
 button.link.following.active {
-    background-color: white;
-    padding: 5px 10px !important;
-    border: solid 1px #CCC;
-    border-radius: 4px;
+   background-color: white;
+   padding: 5px 10px !important;
+   border: solid 1px #CCC;
+   border-radius: 4px;
 }
 header {
-    margin-top: 20px;
+   margin-top: 20px;
 }
-*/
+ 
 nav {
-    position: sticky;
-    height: 70px;
-    width: 100vw;
-    background-color: white;
-    border-bottom: solid #dbdbdb 1px;
-    left: 0px;
-    top: 0px;
-    padding: 0px 3vw;
+   position: sticky;
+   height: 70px;
+   width: 100vw;
+   background-color: white;
+   border-bottom: solid #dbdbdb 1px;
+   left: 0px;
+   top: 0px;
+   padding: 0px 3vw;
 }
-
+ 
 nav, nav ul, .card .header, .card .buttons, .card .add-comment {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
 nav ul {
-    list-style-type: none;
+   list-style-type: none;
 }
 li {
-    margin-left: 30px;
+   margin-left: 30px;
 }
-/*
-aside {
-    position: fixed;
-    right: 0px;
-    top: 70px;
-    width: calc(40vw - 6px);
-    
-    background-color: #f2f2f2;
-    height: calc(100vh - 100px);
-    padding-left: 30px;
-}
-main {
-    
-    width: 60vw;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-#posts {
-    width: 50vw;
-}
-
-.stories {
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-
-    width: 50vw;
-    min-width: 540px;
-    border: solid 1px #dbdbdb;
-    margin-bottom: 30px;
-    background-color: #fff;
-    overflow: hidden;
-}
-.stories > div {
-    margin-right: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.stories > div .pic {
-    min-width: 50px;
-    min-height: 50px;
-    border: solid 3px #dbdbdb;
-    border-radius: 27px;
-}
-.stories p {
-    margin-top: 4px;
-    margin-bottom: 0px;
-    font-size: 0.80em;
-    color: #999;
-    width: 66px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: center;
-}
-
-.card {
-    border: solid 1px #dbdbdb;
-    margin-bottom: 30px;
-    background-color: #fff;
-    width: 50vw;
-    min-width: 540px;
-}
-
-.card img {
-    width: 100%;
-    height: auto;
-}
-.card .header, .card .info {
-    padding: 10px;
-    color: #444;
-}
-
-.card .buttons {
-    font-size: 1.3em;
-    padding: 5px;
-}
-.card .buttons i {
-    margin-right: 4px;
-}
-
-.card  button.link {
-    font-size: 1em;
-}
-
-.card .caption, .card .comments, .likes {
-    padding: 0px 5px;
-}
-.card .caption p, .card .comments p {
-    margin: 8px 0px 3px 0px;
-    font-size: 0.9em;
-}
-.card .timestamp {
-    color: #999;
-    text-transform: uppercase;
-    font-size: 0.70em !important;
-    margin-bottom: 5px;
-}
-.card .add-comment {
-    border-top: solid 1px #dbdbdb;
-    padding: 10px 15px;
-}
-
-.card .add-comment .input-holder {
-    width: 90%;
-}
-
-.card .add-comment input, .card .add-comment input:focus, .card .add-comment input:focus-visible {
-    border-width: 0px;
-    outline: none;
-    font-size: 0.95em;
-    width: 85%;
-    padding: 10px 0px;
-}
-.card .add-comment i {
-    font-size: 1.3em;
-    margin-right: 10px;
-}
-
-.suggestion-text {
-    color: #666;
-    font-weight: 600;
-    letter-spacing: 0px;
-}
-
-.suggestions section {
-    display: grid;
-    grid-template-columns: 35px 2fr 1fr;
-    align-items: center;
-    width: 25vw;
-}
-.suggestions section > div {
-    padding: 8px;
-    width: 200px;
-}
-.suggestions section p, .suggestions section a {
-    margin: 0px;
-}
-.suggestions section p {
-    color: #333;
-    font-weight: 600;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.suggestions section a {
-    font-size: 0.8em;
-}
-.suggestions section p:nth-child(2) {
-    color: #666;
-    font-size: 0.8em;
-    font-weight: 400;
-}
-.suggestions section .pic {
-    min-width: 30px;
-    min-height: 30px;
-    border: solid 1px #dbdbdb;
-    border-radius: 15px;
-}
-aside header {
-    display: flex;
-    align-items: center;
-    width: 25vw;
-}
-
-aside header .pic {
-    min-width: 60px;
-    min-height: 60px;
-    border-radius: 33px;
-    border-width: 0px;
-    margin-right: 20px;
-}
-.visuallyhidden {
-    display: none;
-}
-
-@media (max-width: 900px) {
-    
-    main {
-        width: 100vw;
-        padding: 0px;
-        align-items: center;
-    }
-    .card, .stories {
-        width: 75vw;
-        min-width: auto;
-    }
-}
-
-@media (max-width: 700px) {
-    .card, .stories {
-        width: 90vw;
-    }
-}
- */
-
-
-/* FROM LAB 7 */
-/* body * {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-main {
-    display: flex;
-    justify-content: flex-end;
-}
-
-#suggestions {
-    width: 350px;
-    background-color: #f2f2f2;
-    padding: 5px;
-}
-
-.suggestion {
-    display: grid;
-    grid-template-columns: 50px auto 70px;
-    align-items: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.suggestion p {
-    margin: 0;
-}
-
-.suggestion img {
-    border-radius: 15px;
-}
-
-.suggestion .username {
-    font-weight: bold;
-    color: #555;
-}
-
-.suggestion button {
-    padding: 5px 10px;
-    border: 1px;
-    border-color: #999;
-    border-radius: 4px;
-}
-
-.follow {
-    background: transparent;
-}
-
-.unfollow {
-    background: white;
-} */
-
-/* .suggestion-text {
-    color: #666;
-    font-weight: 600;
-    letter-spacing: 0px;
-}
-
-.suggestions section {
-    display: grid;
-    grid-template-columns: 35px 2fr 1fr;
-    align-items: center;
-    width: 25vw;
-}
-.suggestions section > div {
-    padding: 8px;
-    width: 200px;
-}
-.suggestions section p, .suggestions section a {
-    margin: 0px;
-}
-.suggestions section p {
-    color: #333;
-    font-weight: 600;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.suggestions section a {
-    font-size: 0.8em;
-}
-.suggestions section p:nth-child(2) {
-    color: #666;
-    font-size: 0.8em;
-    font-weight: 400;
-}
-.suggestions section .pic {
-    min-width: 30px;
-    min-height: 30px;
-    border: solid 1px #dbdbdb;
-    border-radius: 15px;
-} */
-
-
+ 
 .rec-items {
-    padding: 20px;
-    position: fixed;
-    right: 0;
-    margin: 20px;
-    width: 40vw;
-    padding-left: 50px;
-    padding-top: 80px;
-    font-family: Arial, Helvetica, sans-serif;
-    height: 600px;
+   padding: 20px;
+   position: fixed;
+   right: 0;
+   margin: 20px;
+   width: 40vw;
+   padding-left: 0px;
+   padding-top: 14px;
+   font-family: Arial, Helvetica, sans-serif;
+   height: 600px;
 }
-
+ 
 .gibsonjack-img {
-    width: 100px;
-    margin: 15px;
-    border-radius: 50%;
-    
+   width: 100px;
+   margin: 15px;
+   border-radius: 50%;
+  
 }
-
+ 
 .gibsonjack-profile {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 1.2em;
-    font-family: Comfortaa;
-    margin-left: 100px;
-    padding-left: 0px;
-   
-    
+   display: flex;
+   align-items: center;
+   font-weight: bold;
+   font-size: 1.2em;
+   font-family: Comfortaa;
+   margin-left: 100px;
+   padding-left: 0px;
+ 
+  
 }
-
+ 
 .suggestions {
-    font-weight: bold;
-    color: black;
-    padding: 15px;
-    margin-left: 100px;
-    padding-left: 0px;
-    
+   font-weight: bold;
+   color: black;
+   padding: 15px;
+   margin-left: 100px;
+   padding-left: 0px;
+  
 }
-
+ 
 .suggestion-imgs {
-    width: auto;
-    height: 40px;
-    margin: 15px;
-    border-radius: 50%;
-    margin-left: 100px;
-    
-    
+   width: auto;
+   height: 40px;
+   margin: 15px;
+   border-radius: 50%;
+   margin-left: 100px;
+  
+  
 }
-
+ 
 .suggested-profile {
-    display:grid;
-    grid-template-columns: 150px 200px auto;
-    align-items: center;
-    height: 60px;
-    width: auto;
-    
-    
+   display:grid;
+   grid-template-columns: 150px 200px auto;
+   align-items: center;
+   height: 60px;
+   width: auto;
+  
+  
 }
-
+ 
 .name-and-suggestion {
-    display:grid;
-    margin: 15px;
-    
+   display:grid;
+   margin: 15px;
+  
 }
-
+ 
 .suggested-name {
-    font-weight: bold;
-    
+   font-weight: bold;
+  
 }
-
+ 
 .suggested-for-you {
-    color: black;
-    font-size: 0.8em;
-    font-weight: bold;
-    
+   color: black;
+   font-size: 0.8em;
+   font-weight: bold;
+  
 }
-
+ 
 .follow {
-    color:blue;
-   
-    
+   color:blue;
+   cursor: pointer;
 }
-
-
+ 
+.follow:hover {/*so that u know when hovering over the btn header*/
+   color: #777;
+}
+ 
 .story-items {
-    display:flex;
-    margin: 20px;
-    background-color: white;
-    width: 50vw; 
-    /*max-width: 500px;*/
-    height: 100px;
+   display:flex;
+   margin: 20px;
+   background-color: white;
+   width: 50vw;
+   /*max-width: 500px;*/
+   height: 100px;
 }
-
+ 
 .each-story {
-    display:grid;
-    text-align: center;
-    color: black;
-    background-color: white;
-    /*width: 80px;*/
-    height: auto;
-    margin-left: 0;
+   display:grid;
+   text-align: center;
+   color: black;
+   background-color: white;
+   /*width: 80px;*/
+   height: auto;
+   margin-left: 0;
 }
-
+ 
 .story-images {
-    border: 3px solid darkgray;
-    background-color: white;
-    width: 50px;
-    height: auto;
-    margin-left: 12px;
-    margin-bottom: 0;
-    
+   border: 3px solid darkgray;
+   background-color: white;
+   width: 50px;
+   height: auto;
+   margin-left: 12px;
+   margin-bottom: 0;
+  
 }
-
+ 
 .story-name {
-    background-color: white;
-    padding: 9px;
-    font-size: 0.5em;
-    padding-bottom: 0;
-    padding-top: 0;
+   background-color: white;
+   padding: 9px;
+   font-size: 0.5em;
+   padding-bottom: 0;
+   padding-top: 0;
 }
-
-
+ 
+ 
 .card-items {
-    margin: 20px;
-   
-   
-    
-   
+   margin: 20px;
+ 
+ 
+  
+ 
 }
-
+ 
 .post-image {
-    width: 100%;
-    height: auto;
+   width: 100%;
+   height: auto;
 }
-
+ 
 .post-name {
-    /*margin-right: auto;*/
-    font-weight: bold;
-    padding: 10px;
-    background-color: white;
-    font-family: Comfortaa;
-    
-    
+   /*margin-right: auto;*/
+   font-weight: bold;
+   padding: 10px;
+   background-color: white;
+   font-family: Comfortaa;
+  
+  
 }
-
+ 
 .post {
-    background-color: white; 
-    margin-bottom: 15px;
-   
+   background-color: white;
+   margin-bottom: 15px;
+ 
 }
-
+ 
 .ellipse {
-    margin-left: auto;
-    font-weight: bold;
-    padding: 10px;
-    background-color: white;
+   margin-left: auto;
+   font-weight: bold;
+   padding: 10px;
+   background-color: white;
 }
-
+ 
 .name-and-ellipse {
-    display: flex;
-    align-items: center;
-    background-color: white;
+   display: flex;
+   align-items: center;
+   background-color: white;
 }
-
+ 
 .icons {
-    margin: .5em;  
-    display: flex; /*this is what you need to move things around*/
-  /*  align-items: center; */
-  background-color: white;
+   margin: .5em; 
+   display: flex; /*this is what you need to move things around*/
+ /*  align-items: center; */
+ background-color: white;
 }
-
+ 
 .other-icons {
-    background-color: white;
-    border: none;
+   background-color: white;
+   border: none;
 }
-
+ 
 .bookmark {
-    margin-left: auto;
-    background-color: white;
+   margin-left: auto;
+   background-color: white;
 }
-
+ 
 .likes {
-    font-weight: bold;
-    margin: 15px;
-    background-color: white;
+   font-weight: bold;
+   margin: 15px;
+   background-color: white;
 }
-
+ 
 .caption-and-comments {
-    margin: 15px;
-    background-color: white;
+   margin: 15px;
+   background-color: white;
 }
-
+ 
 .post-comments {
-    display: flex;
-    align-items: center;
-    background-color: white;
+   display: flex;
+   align-items: center;
+   background-color: white;
 }
-
+ 
 .post-btn {
-    margin-left: auto;
-    color: blue;
-    background-color: white;
+   margin-left: auto;
+   color: blue;
+   background-color: white;
+   padding-right: 15px;
+   font-size: 1em;
+   cursor: pointer;
 }
-
+ 
+.post-btn:hover {/*so that u know when hovering over the btn header*/
+   color: #777;
+}
+ 
 .comment-background {
-    background-color: white;
-    border: none;
+   background-color: white;
+   border: none;
 }
-
-
+ 
+ 
 .stories-and-cards {
-    width:60vw;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding-top: 80px;
-    font-family: Arial, Helvetica, sans-serif;
-    
+   width:60vw;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   padding-top: 14px;
+   font-family: Arial, Helvetica, sans-serif;
+  
 }
-
+ 
 .card-items {
-    width: 50vw;
-    
-
+   width: 50vw;
+  
+ 
 }
-
+ 
 .view-comments {
-    color: blue;
-    background-color: white;
-    margin-left: 10px;
-    border: none;
-    font-size: 1em;
+   color: blue;
+   background-color: white;
+   margin-left: 10px;
+   border: none;
+   font-size: 1em;
 }
-
-
-
-@media (max-width: 900px) { 
-    .rec-items{
-        display: none;
-
-    }
-    .stories-and-cards {
-        width: 100%;
-        align-items: center;
-
-    }
-    .card-items {
-        width: 80vw;
-    }
-    .story-items{
-        width: 80vw;
-    }
+ 
+ 
+ 
+@media (max-width: 900px) {
+   .rec-items{
+       display: none;
+ 
+   }
+   .stories-and-cards {
+       width: 100%;
+       align-items: center;
+ 
+   }
+   .card-items {
+       width: 80vw;
+   }
+   .story-items{
+       width: 80vw;
+   }
 }
-
+ 
 .fas.fa-heart { /* for elts that have both classes */
-    color: red;
+   color: red;
 }
-
-
+ 
+ 
 /**************************************************/
 /* Modal */
 .modal-bg {
-    background: rgba(50, 50, 50, 0.8);
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+   background: rgba(50, 50, 50, 0.8);
+   position: fixed;
+   top: 0px;
+   left: 0px;
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
-
-.modal {
  
-    width: 60vw;
-    height: auto;
-    max-height: 80vh;
-    background-color: white;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    /* padding: 20px; original padding*/
-    /* added this*/
-    padding: 20px;
-    padding-left: 500px;
-    
-    overflow-y: scroll;
-    overscroll-behavior-y: contain;
+.modal-sm {
+   background: black;
+   position: fixed;
+   top: 0px;
+   /* left: 0px; */
+   width: 80%;
+   height: 65%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 100px;
+   border-radius: 10px;
 }
-
+ 
+.modal-img-div {
+   width: 60%;
+   height: 100%;
+   margin: 0;
+   padding: 0;
+}
+ 
 .modal-image {
-    width: 300px !important;
-    position: relative;
-    left: 0px;
-   
-
+   width: 100%;
+   height: 100%;
+   border-radius: 10px;
+   left: 0px;
+  
+}
  
-
+.modal {
+   width: 40%;
+   height: 100%;
+   max-height: 100%;
+   background-color: white;
+   border-radius: 10px;
+   display: grid;
+   flex-direction: column;
+   padding: 40px;
+   /* padding-left: 50px; */
+   overflow-y: scroll;
+   overscroll-behavior-y: contain;
+   max-width: 40%;
+   padding-top: 20px;
 }
-.modal-comments {
-   
-    left: 1100px
+ 
+ 
+ 
+ 
+.modal-user-profile {
+   display: flex;
+   align-items: center;
+   font-weight: bold;
+   font-size: 1.2em;
+   font-family: Comfortaa;
+   margin-left: 0px;
+   padding-left: 0px;
 }
-
-
+ 
 .modal-pic{
-    left: 0px;
-} 
+   width: 50px;
+   margin: 15px;
+   border-radius: 50%;
+}
+ 
+ 
+.modal-comments {
+ 
+   left: 1100px
+}
+ 
+ 
+ 
 .close {
-    align-self: flex-end;
+   width: 60px;
+   position: fixed;
+   margin-left: 1300px;
+   margin-bottom: 650px;
 }
-
+ 
+ 
 .hidden {
-    display: none !important;
+   display: none !important;
 }
-
+ 
 .modal-body {
-    overflow-y: auto;
+   overflow-y: auto;
 }
-
+ 
 .row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    align-content: flex-start;
-    padding: 10px;
-    align-items: center;
-    border-bottom: solid 1px #CCC;
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 5px;
+   align-content: flex-start;
+   padding: 10px;
+   align-items: center;
+   border-bottom: solid 1px #CCC;
 }
-
+ 
+.each-comment {
+   display: flex;
+}
+ 
+.comment-image {
+   width: 50px;
+   height: 50px;
+   margin: 15px;
+   border-radius: 50%;
+}
+ 
+.comment-and-time {
+   display: grid;
+   margin: 20px;
+   margin-top: 0;
+}
+ 
+.comment {
+   width: 250px;
+}
+ 
+.like-comment {
+   background-color: white;
+   border: none;
+   width: 15px;
+   height: 15px;
+   margin-top: 15px;
+   cursor: pointer;
+}
+ 
+.like-comment:hover {/*so that u know when hovering over the btn header*/
+   color: #777;
+}
+ 
 /************************************************************************************/
+

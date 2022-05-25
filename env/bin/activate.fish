@@ -29,7 +29,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/vernon/Documents/spring/webdev-assignments/photo-app/env"
+set -gx VIRTUAL_ENV "/Users/vernon/Desktop/photo-app/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
