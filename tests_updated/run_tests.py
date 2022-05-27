@@ -7,7 +7,7 @@ import unittest
 from tests_updated.test_bookmarks import TestBookmarkListEndpoint
 from tests_updated.test_comments import TestCommentListEndpoint, TestCommentDetailEndpoint
 from tests_updated.test_followers import TestFollowerListEndpoint
-from tests_updated.test_following import TestFollowingListEndpoint
+from tests_updated.test_following import TestFollowingListEndpoint, TestFollowingDetailEndpoint
 from tests_updated.test_like_post import TestLikePostListEndpoint
 from tests_updated.test_login import TestLoginEndpoint
 from tests_updated.test_logout import TestLogoutEndpoint
